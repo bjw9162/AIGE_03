@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Werewolf.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Werewolf.cs" Line="60" Column="28" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="103" Column="62" />
+      <File FileName="Assets\Scripts\Vehicle.cs" Line="59" Column="39" />
+      <File FileName="Assets\Scripts\Villager.cs" Line="213" Column="1" />
+      <File FileName="Assets\Scripts\Steering.cs" Line="86" Column="41" />
+      <File FileName="Assets\Scripts\Dimensions.cs" Line="13" Column="1" />
+      <File FileName="Assets\Scripts\SmoothFollowCS.cs" Line="39" Column="1" />
+      <File FileName="Assets\Scripts\Saved.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
