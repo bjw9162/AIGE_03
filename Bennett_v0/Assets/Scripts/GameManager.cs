@@ -6,21 +6,19 @@ using System.Collections.Generic;
 [System.Serializable]
 public class GameManager : MonoBehaviour
 {
-	// weight parameters are set in editor and used by all villagers 
-	// if they are initialized here, the editor will override settings	 
-	// weights used to arbitrate btweeen concurrent steering forces 
+	// Weights for steering
 	public float alignmentWt;
 	public float separationWt;
 	public float cohesionWt;
 	public float avoidWt;
 	public float inBoundsWt;
 
-	// these distances modify the respective steering behaviors
+	// Also for steering behaviors
 	public float avoidDist;
 	public float separationDist;
 	
 
-	// set in editor to promote reusability.
+	// "Constants"
 	public int numberOfvillagers;
 	public int numberOfWerewolves;
 	public Object villagerPrefab;
@@ -72,7 +70,7 @@ public class GameManager : MonoBehaviour
 	public List<GameObject> VillageFollowers = new List<GameObject>();
 	public List<GameObject> vFollowers {get{return VillageFollowers;}}
 	
-	//list of werewilf followers
+	//list of werewolf followers
 	public List<GameObject> WerewolfFollowers = new List<GameObject>();
 	public List<GameObject> wFollowers {get{return WerewolfFollowers;}}
 	
@@ -82,7 +80,7 @@ public class GameManager : MonoBehaviour
 	public GameObject[] Obstacles {get{return obstacles;}}
 	
 	// this is a 2-dimensional array for distances between villagers
-	// it is recalculated each frame on update
+	// it is recalculated each frame on update (TODO: CHANGE THIS PLZ TO MORE EFFICENT)
 	private float[,] distances;
 
 		
@@ -92,13 +90,12 @@ public class GameManager : MonoBehaviour
 		instance = this;
 		//construct our 2d array based on the value set in the editor
 		distances = new float[numberOfvillagers, numberOfvillagers];
+		
 		//reference to Vehicle script component for each flocker
 		//Flocking flocker; // reference to flocker scripts
 		Villager villager;
 		Werewolf werewolf;
 		Follow follower;
-		
-		
 		
 		obstacles = GameObject.FindGameObjectsWithTag ("Obstacle");
 		
@@ -111,7 +108,7 @@ public class GameManager : MonoBehaviour
 				new Vector3 (600 + 5 * i, 5, 400), Quaternion.identity));
 			//grab a component reference
 			villager = villagers [i].GetComponent<Villager> ();
-			villagers[i].GetComponent<MeshRenderer>().material.SetColor("_Color", Color.green);
+			// HOW ABOUT NO //villagers[i].GetComponent<MeshRenderer>().material.SetColor("_Color", Color.green);
 			//set values in the Vehicle script
 			villager.Index = i;
 			
@@ -121,7 +118,7 @@ public class GameManager : MonoBehaviour
 			//Create a follower for the minimap
 			follower = VillageFollowers[i].GetComponent<Follow> ();
 			follower.ToFollow = villagers[i];
-			VillageFollowers[i].GetComponent<MeshRenderer>().material.SetColor("_Color", Color.green);
+			//VillageFollowers[i].GetComponent<MeshRenderer>().material.SetColor("_Color", Color.green);
 			villager.Follower = follower;
 			
 		}
