@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: cbc249ee07bc3cf438edec7f9d2e9f8b
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: ikHandle9
+    100002: ikHandle11
+    100004: ikHandle5
+    100006: joint9
+    100008: joint13 1
+    100010: joint1
+    100012: joint20
+    100014: joint21
+    100016: joint4
+    100018: joint12
+    100020: ikHandle1
+    100022: ikHandle7
+    100024: joint10
+    100026: joint15 1
+    100028: joint22
+    100030: joint14
+    100032: ikHandle2
+    100034: joint16 1
+    100036: joint11
+    100038: joint17 1
+    100040: joint4 1
+    100042: //RootNode
+    100044: joint14 1
+    100046: joint18
+    100048: joint2 1
+    100050: joint8
+    100052: joint6
+    100054: joint3 1
+    100056: ikHandle8
+    100058: ikHandle4
+    100060: ikHandle10
+    100062: ikHandle3
+    100064: joint7
+    100066: joint5
+    100068: joint3
+    100070: joint16
+    100072: joint2
+    100074: joint17
+    100076: joint36
+    100078: joint30
+    100080: wolf:wolfyskle_Wolf
+    100082: joint13
+    100084: joint23
+    100086: joint5 1
+    100088: ikHandle6
+    100090: joint19
+    100092: joint15
+    400000: ikHandle9
+    400002: ikHandle11
+    400004: ikHandle5
+    400006: joint9
+    400008: joint13 1
+    400010: joint1
+    400012: joint20
+    400014: joint21
+    400016: joint4
+    400018: joint12
+    400020: ikHandle1
+    400022: ikHandle7
+    400024: joint10
+    400026: joint15 1
+    400028: joint22
+    400030: joint14
+    400032: ikHandle2
+    400034: joint16 1
+    400036: joint11
+    400038: joint17 1
+    400040: joint4 1
+    400042: //RootNode
+    400044: joint14 1
+    400046: joint18
+    400048: joint2 1
+    400050: joint8
+    400052: joint6
+    400054: joint3 1
+    400056: ikHandle8
+    400058: ikHandle4
+    400060: ikHandle10
+    400062: ikHandle3
+    400064: joint7
+    400066: joint5
+    400068: joint3
+    400070: joint16
+    400072: joint2
+    400074: joint17
+    400076: joint36
+    400078: joint30
+    400080: wolf:wolfyskle_Wolf
+    400082: joint13
+    400084: joint23
+    400086: joint5 1
+    400088: ikHandle6
+    400090: joint19
+    400092: joint15
+    4300000: wolf:wolfyskle_Wolf
+    11100000: //RootNode
+    13700000: joint6
+    13700002: wolf:wolfyskle_Wolf
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 1
+  userData: 
