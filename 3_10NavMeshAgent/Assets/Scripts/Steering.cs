@@ -143,37 +143,40 @@ public class Steering : MonoBehaviour
 	public Vector3 AvoidObstacle (GameObject obst, float safeDistance)
 	{
 		Vector3 dv = Vector3.zero;
-		//compute a vector from charactor to center of obstacle
-		Vector3 vecToCenter = obst.transform.position - transform.position;
-		//eliminate y component so we have a 2D vector in the x, z plane
-		vecToCenter.y = 0;
-		float dist = vecToCenter.magnitude;
-		
-		//return zero vector if too far to worry about
-		if (dist > safeDistance + obst.GetComponent<Dimensions> ().Radius + GetComponent<Dimensions> ().Radius)
-			return dv;
-		
-		//return zero vector if behind us
-		if (Vector3.Dot (vecToCenter, transform.forward) < 0)
-			return dv;
-		
-		//return zero vector if we can pass safely
-		float rightDotVTC = Vector3.Dot (vecToCenter, transform.right);
-		if (Mathf.Abs (rightDotVTC) > obst.GetComponent<Dimensions> ().Radius + GetComponent<Dimensions> ().Radius)
-			return dv;
-		
-		//obstacle on right so we steer to left
-		if (rightDotVTC > 0)
-			dv = transform.right * -maxSpeed * safeDistance / dist;
-		else
-		//obstacle on left so we steer to right
-			dv = transform.right * maxSpeed * safeDistance / dist;
-		
-		//stay in x/z plane
-		dv.y = 0;
-		
-		//compute the force
-		dv -= transform.forward * speed;
+		if (obst != null) 
+		{
+			//compute a vector from charactor to center of obstacle
+			Vector3 vecToCenter = obst.transform.position - transform.position;
+			//eliminate y component so we have a 2D vector in the x, z plane
+			vecToCenter.y = 0;
+			float dist = vecToCenter.magnitude;
+
+			//return zero vector if too far to worry about
+			if (dist > safeDistance + obst.GetComponent<Dimensions> ().Radius + GetComponent<Dimensions> ().Radius)
+					return dv;
+
+			//return zero vector if behind us
+			if (Vector3.Dot (vecToCenter, transform.forward) < 0)
+					return dv;
+
+			//return zero vector if we can pass safely
+			float rightDotVTC = Vector3.Dot (vecToCenter, transform.right);
+			if (Mathf.Abs (rightDotVTC) > obst.GetComponent<Dimensions> ().Radius + GetComponent<Dimensions> ().Radius)
+					return dv;
+
+			//obstacle on right so we steer to left
+			if (rightDotVTC > 0)
+					dv = transform.right * -maxSpeed * safeDistance / dist;
+			else
+	//obstacle on left so we steer to right
+					dv = transform.right * maxSpeed * safeDistance / dist;
+
+			//stay in x/z plane
+			dv.y = 0;
+
+			//compute the force
+			dv -= transform.forward * speed;
+		}
 		return dv;
 	}
 }

@@ -16,7 +16,32 @@ public class Villager : MonoBehaviour
 	private CharacterController characterController;
 	private Steering steering;
 	private GameManager gameManager;
+
+
 	
+	// List of nodes for pathfinding
+	// Note: when I used this I just kept a singleton
+	// and passed this around. mve9302
+	private List<GameObject> pathNodes;
+	public List<GameObject> PathNodes
+	{
+		get { return pathNodes; }
+		set { pathNodes = value; }
+	}
+
+
+	private GameObject currentTarget;
+	//private GameObject endOfPath;
+
+	//distance until we move to the next path node
+	const int FoundTargetDistance = 25;
+	const bool PathFollowingEnabled = false;
+	//uncomment this and the below 
+	//in the pathfolliwing method to allow 
+	//paths that dont delete
+	//private int pathLocation;
+
+
 	//wander varables
 	public int _wanAngle;
 	public int radiusOfCircle;
@@ -33,7 +58,7 @@ public class Villager : MonoBehaviour
 		get { return index; }
 		set { index = value; }
 	}
-	
+
 	// get a reference to the manager's FlockManager component (script)
 	public void setGameManager (GameObject gManager)
 	{
@@ -62,6 +87,8 @@ public class Villager : MonoBehaviour
 		leaderFollowBool = false; // following mayor?
 		
 		gameManager = GameManager.Instance;
+
+		pathNodes = new List<GameObject> (); 
 	}
 	
 	//Handles Collision with Cart for Scoring and Clean Up Purposes
@@ -156,6 +183,14 @@ public class Villager : MonoBehaviour
 				steeringForce += 15 * leaderFollow();
 				steeringForce += gameManager.separationWt * Separation();
 				steeringForce += gameManager.cohesionWt * Cohesion();
+			}
+			else if( PathFollowingEnabled == true )
+			{
+				CheckPath();
+				if( currentTarget )
+				{
+					steering.Seek( currentTarget );
+				}
 			}
 			else
 			{	
@@ -345,6 +380,44 @@ public class Villager : MonoBehaviour
 			steeringForce.Normalize ();
 			steeringForce *= steering.maxForce;
 		}
+	}
+
+	private void CheckPath()
+	{
+		if ( pathNodes.Count > 0 ) 
+		{
+			currentTarget = pathNodes[0];
+		}
+
+		if ( currentTarget ) 
+		{
+			if( Vector3.Distance( this.transform.position, currentTarget.transform.position ) < FoundTargetDistance )
+			{
+				//this is for a not infinite path
+				/*if( currentTarget == endOfPath )
+				{
+					pathNodes.RemoveAt(0);
+					steering.Arrival( currentTarget.gameObject.transform.position );
+				}
+				else
+				{
+					//move below code here
+				}*/
+
+
+
+				//remove the noade from the list
+				pathNodes.RemoveAt(0);
+
+				// If we want to keept he path for some reason visible for some reason
+
+				//pathLocation++;
+				//currentTarget = pathNodes[pathLocation];
+				//this makes the target invisible
+				//pathNodes[pathLocation].renderer.enabled = false;
+			}
+		}
+
 	}
 	
 	//---------------------------------------------------------------------------------------------
