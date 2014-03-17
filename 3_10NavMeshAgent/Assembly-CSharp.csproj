@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Dead.cs" />
      <Compile Include="Assets\Scripts\Dimensions.cs" />
      <Compile Include="Assets\Scripts\Explaination.cs" />
+     <Compile Include="Assets\Scripts\FSMmatcher.cs" />
      <Compile Include="Assets\Scripts\Follow.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
@@ -63,6 +64,7 @@
      <Compile Include="Assets\Scripts\Werewolf.cs" />
      <Compile Include="Assets\Scripts\Win.cs" />
      <Compile Include="Assets\Scripts\seekerStart.cs" />
+     <None Include="Assets\VillagerFSM.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">

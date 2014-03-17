@@ -41,6 +41,7 @@
 Assets/Scripts/Dead.cs
 Assets/Scripts/Dimensions.cs
 Assets/Scripts/Explaination.cs
+Assets/Scripts/FSMmatcher.cs
 Assets/Scripts/Follow.cs
 Assets/Scripts/GameManager.cs
 Assets/Scripts/Grid.cs

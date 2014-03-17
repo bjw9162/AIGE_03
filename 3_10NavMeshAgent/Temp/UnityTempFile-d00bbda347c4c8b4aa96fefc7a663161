@@ -1,10 +1,8 @@
 -debug
 -target:library
 -nowarn:0169
--out:Temp/Assembly-CSharp.dll
+-out:Temp/Assembly-CSharp-firstpass.dll
 -r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
--r:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
--r:Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll
 -r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
 -define:UNITY_WEBPLAYER
 -define:WEBPLUG
@@ -38,20 +36,4 @@
 -define:ENABLE_PROFILER
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_WIN
-Assets/Scripts/Dead.cs
-Assets/Scripts/Dimensions.cs
-Assets/Scripts/Explaination.cs
-Assets/Scripts/Follow.cs
-Assets/Scripts/GameManager.cs
-Assets/Scripts/Grid.cs
-Assets/Scripts/Mayor.cs
-Assets/Scripts/NavAgent.cs
-Assets/Scripts/Quadrant.cs
-Assets/Scripts/Saved.cs
-Assets/Scripts/SmoothFollowCS.cs
-Assets/Scripts/Steering.cs
-Assets/Scripts/Vehicle.cs
-Assets/Scripts/Villager.cs
-Assets/Scripts/Werewolf.cs
-Assets/Scripts/Win.cs
-Assets/Scripts/seekerStart.cs
+"Assets/Standard Assets/Character Controllers/Sources/Scripts/MouseLook.cs"
