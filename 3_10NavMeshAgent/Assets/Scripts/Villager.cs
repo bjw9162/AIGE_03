@@ -98,7 +98,7 @@ public class Villager : MonoBehaviour
 
 		gameManager = GameManager.Instance;
 
-		FSMPath = "Resources/VillagerFSM.txt";
+		FSMPath = "Assets/Resources/VillagerFSM.txt";
 		LoadFSM();
 		currSt = 0;
 
@@ -216,7 +216,7 @@ public class Villager : MonoBehaviour
 			{
 				//WanderArea
 				case 0:
-					
+				
 					nearWere = false;
 					leaderFollowBool = false;		
 
@@ -236,9 +236,11 @@ public class Villager : MonoBehaviour
 						}
 						else {
 							
-							if(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position) < 40 && leaderFollowBool == false) {
+							if(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position) < 50) {
 								MakeTrans(currSt, 1);
 							}else {
+								Debug.Log(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position));
+								Debug.Log("Wander");
 								steeringForce += 2 * wander();
 							}
 						}
@@ -248,15 +250,17 @@ public class Villager : MonoBehaviour
 					break;
 				//FollowMayor
 				case 1:
-						
-						for(int i = 0; i < gameManager.Werewolves.Count; i++) {
+				Debug.Log("Mayor");
+
+					leaderFollowBool = true;
+						/*for(int i = 0; i < gameManager.Werewolves.Count; i++) {
 							
 							if(Vector3.Distance(this.transform.position, gameManager.Werewolves[i].transform.position) < 5) {
 								MakeTrans(currSt, 0);
 								nearWere = true;
 							}
 							
-						}
+						}*/
 						
 						if(nearWere == false) {
 							
@@ -284,7 +288,7 @@ public class Villager : MonoBehaviour
 			break;
 				//FleeWerewolf
 				case 2:
-
+				Debug.Log("Werewolf");
 					nearWere = false;	
 				
 					if(wereInCity) {
@@ -343,55 +347,6 @@ public class Villager : MonoBehaviour
 			}
 
 			steeringForce += gameManager.inBoundsWt * StayInBounds (200, new Vector3 (469, 0, 454));
-
-
-			//----------------OLD----------------------------------------
-			/*if( wDist < 20)
-			{
-				if(wDist < 5)
-				{
-					steeringForce += steering.Flee(gameManager.Werewolves[i].transform.position);
-					
-					if(leaderFollowBool == true)
-					{
-						gameManager.Followers.Remove(this);	
-
-					}
-						
-					leaderFollowBool = false;
-
-				}
-				else
-				{
-					steeringForce += steering.Evasion(gameManager.Werewolves[i].transform.position 
-						+ gameManager.Werewolves[i].transform.forward);
-				}
-			}
-			else if(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position) < 40 && leaderFollowBool == false)
-			{
-				gameManager.Followers.Add(this);
-				steeringForce += 10 * leaderFollow();
-				steeringForce += gameManager.separationWt * Separation();
-				steeringForce += gameManager.cohesionWt * Cohesion();
-			}
-			else if(leaderFollowBool == true)
-			{
-				steeringForce += 15 * leaderFollow();
-				steeringForce += gameManager.separationWt * Separation();
-				steeringForce += gameManager.cohesionWt * Cohesion();
-			}
-			else if( PathFollowingEnabled == true )
-			{
-				CheckPath();
-				if( currentTarget )
-				{
-					steering.Seek( currentTarget );
-				}
-			}
-			else
-			{	
-				steeringForce += 2 * wander();
-			}*/
 		
 
 	}
