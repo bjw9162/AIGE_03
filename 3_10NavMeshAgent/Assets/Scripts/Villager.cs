@@ -96,15 +96,15 @@ public class Villager : MonoBehaviour
 		characterController = gameObject.GetComponent<CharacterController> ();
 		steering = gameObject.GetComponent<Steering> ();
 
-		FSMPath = "Assests/VillagerFSM.txt";
+		gameManager = GameManager.Instance;
+
+		FSMPath = "Resources/VillagerFSM.txt";
 		LoadFSM();
 		currSt = 0;
 
 		leaderFollowBool = false; // following mayor
 		nearWere = false; // if near werewolf for decision tree
 		wereInCity = false; //if were wolves have infiltrated the city
-		
-		gameManager = GameManager.Instance;
 
 		pathNodes = new List<GameObject> (); 
 	}
