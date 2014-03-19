@@ -201,8 +201,9 @@ public class Villager : MonoBehaviour
 		
 		// Apply gravity
 		moveDirection.y -= gravity;
-		
+
 		// the CharacterController moves us subject to physical constraints
+
 		characterController.Move (moveDirection * Time.deltaTime);
 	}
 
@@ -216,14 +217,14 @@ public class Villager : MonoBehaviour
 			{
 				//WanderArea
 				case 0:
-				
+					
 					nearWere = false;
 					leaderFollowBool = false;		
 
 					for(int i = 0; i < gameManager.Werewolves.Count; i++) {
 						
 						if(Vector3.Distance(this.transform.position, gameManager.Werewolves[i].transform.position) < 20) {
-							MakeTrans(currSt, 0);
+							currSt = MakeTrans(currSt, 0);
 							nearWere = true;
 						}
 
@@ -236,11 +237,10 @@ public class Villager : MonoBehaviour
 						}
 						else {
 							
-							if(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position) < 50) {
-								MakeTrans(currSt, 1);
+							if(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position) < 40) {
+								currSt = MakeTrans(currSt, 1);
 							}else {
-								Debug.Log(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position));
-								Debug.Log("Wander");
+								//Debug.Log("Wander");
 								steeringForce += 2 * wander();
 							}
 						}
@@ -250,24 +250,25 @@ public class Villager : MonoBehaviour
 					break;
 				//FollowMayor
 				case 1:
-				Debug.Log("Mayor");
+				//Debug.Log("Mayor");
 
-					leaderFollowBool = true;
-						/*for(int i = 0; i < gameManager.Werewolves.Count; i++) {
+					
+						for(int i = 0; i < gameManager.Werewolves.Count; i++) {
 							
 							if(Vector3.Distance(this.transform.position, gameManager.Werewolves[i].transform.position) < 5) {
-								MakeTrans(currSt, 0);
+								currSt = MakeTrans(currSt, 0);
 								nearWere = true;
 							}
 							
-						}*/
+						}
 						
 						if(nearWere == false) {
 							
-							if(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position) > 30 && leaderFollowBool == true) {
+							if(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position) > 20 && leaderFollowBool == true) {
 								
-								MakeTrans(currSt,4);
+								currSt = MakeTrans(currSt,4);
 								leaderFollowBool = false;
+								gameManager.Followers.Remove(this);
 								
 							}else {
 								if(leaderFollowBool == false) {
@@ -288,15 +289,15 @@ public class Villager : MonoBehaviour
 			break;
 				//FleeWerewolf
 				case 2:
-				Debug.Log("Werewolf");
+				//Debug.Log("Werewolf");
 					nearWere = false;	
 				
 					if(wereInCity) {
-						MakeTrans(currSt, 2);
+						currSt = MakeTrans(currSt, 2);
 					}else {
 
 					if(Vector3.Distance(this.transform.position, gameManager.Mayor.transform.position) < 20 && leaderFollowBool == false) {
-						MakeTrans(currSt, 1);
+						currSt = MakeTrans(currSt, 1);
 					}else {
 						
 						for(int i = 0; i < gameManager.Werewolves.Count; i++)
@@ -317,7 +318,7 @@ public class Villager : MonoBehaviour
 				}
 				
 				if(nearWere == false) 
-					MakeTrans(currSt, 4);
+					currSt = MakeTrans(currSt, 4);
 				}
 					
 				
